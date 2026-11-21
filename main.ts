@@ -32,9 +32,30 @@ mkdirSync(outputDir, { recursive: true });
 const contents = readFileSync(sourcePath, 'utf8');
 
 // Fail loudly on malformed JSON instead of handing the gate a broken file.
-const parsed = JSON.parse(contents) as { url?: unknown };
-if (typeof parsed.url !== 'string' || !parsed.url.startsWith('https://')) {
-  console.error(`POST.json at ${sourcePath} has no valid https url field.`);
+let parsed: unknown;
+try {
+  parsed = JSON.parse(contents);
+} catch (err) {
+  console.error(`POST.json at ${sourcePath} is not valid JSON: ${(err as Error).message}`);
+  process.exit(1);
+}
+
+// POST.json must be a JSON object, not null, an array, or a bare value:
+// reading .url off null would crash, and an array/string has no url field.
+if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+  const kind = Array.isArray(parsed) ? 'array' : parsed === null ? 'null' : typeof parsed;
+  console.error(`POST.json at ${sourcePath} must be a JSON object, got ${kind}.`);
+  process.exit(1);
+}
+
+const url = (parsed as { url?: unknown }).url;
+if (
+  typeof url !== 'string' ||
+  (!url.startsWith('http://') && !url.startsWith('https://'))
+) {
+  console.error(
+    `POST.json at ${sourcePath} must have a "url" string field starting with http:// or https://.`,
+  );
   process.exit(1);
 }
 

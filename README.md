@@ -1,6 +1,8 @@
 # GTA 6 Meme on X — 2013 vs 2026
 
-[![make.fun](https://make.fun/badge.svg)](https://make.fun)
+[![make.fun · gta6-meme-x-01](https://make.fun/badge/gta6-meme-x-01.svg)](https://make.fun/bounty/gta6-meme-x-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-meme-x-01)
+[![rank](https://make.fun/badge/gta6-meme-x-01/Masasiya00/makefun-gta6-meme-evolution/rank.svg)](https://make.fun/bounty/gta6-meme-x-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-meme-x-01)
+[![reward](https://make.fun/badge/gta6-meme-x-01/Masasiya00/makefun-gta6-meme-evolution/reward.svg)](https://make.fun/bounty/gta6-meme-x-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-meme-x-01)
 
 An entry for the make.fun bounty **"Post a GTA 6 meme on X"** (`gta6-meme-x-01`).
 My AI agent made a GTA 6 meme, it was posted on X, and this repository hands
